@@ -7,18 +7,16 @@ namespace UMT_strong_password_checker
         public static void Main(string[] args)
         {
             int minLength = 6, maxLength = 20;
+            int score = 0, minimumChanges = 0; 
 
             // The strings for input uppercarse, lowercase, digits and special chars
             string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string lowercase = "abcdefghijklmnopqrstuvwxyz";
-
             string digits = "0123456789";
             string specialChars = "#?!,-'/`_*$@%&*=+";
           
-
             string errorMessage = "";
-
-                                  
+        
             Console.WriteLine("Enter password:");
 
             // Input password from keyboard (string s for password)
@@ -26,8 +24,6 @@ namespace UMT_strong_password_checker
 
             // Print the password
             Console.WriteLine("\nYour password is: " + s +  "\n");
-
-            int score = 0;
 
             // Conditions for a strong password
             
@@ -38,12 +34,14 @@ namespace UMT_strong_password_checker
                 //Console.WriteLine("Your password has at least 6 characters and at most 20 characters! Perfect!");
             }
             else if (s.Length < minLength)
-            {     
+            {
+                minimumChanges++;
                 errorMessage = errorMessage + " You need to add " + (minLength - s.Length) + " more characters. It is too short.\n ";
             }
 
             else if (s.Length > maxLength)
             {
+                minimumChanges++;
                 errorMessage = errorMessage + " You need to remove " + (s.Length - maxLength) + " characters. It is too long.\n ";
             }
 
@@ -55,6 +53,7 @@ namespace UMT_strong_password_checker
             }
             else
             {
+                minimumChanges++;
                 errorMessage = errorMessage + "You need to add at least 1 uppercase letter.\n ";
             }
 
@@ -66,6 +65,7 @@ namespace UMT_strong_password_checker
             }
             else
             {
+                minimumChanges++;
                 errorMessage = errorMessage + "You need to add at least 1 lowercase letter.\n ";
             }
 
@@ -77,6 +77,7 @@ namespace UMT_strong_password_checker
             }
             else
             {
+                minimumChanges++;
                 errorMessage = errorMessage + "You need to add at least 1 digit.\n ";
             }
 
@@ -88,15 +89,15 @@ namespace UMT_strong_password_checker
             }
             else
             {
+                minimumChanges++;
                 errorMessage = errorMessage + "You need to add at least 1 special char.\n ";
             }
 
-            // 6 if password do not contains three repeating characters in a row
+            // 6 - if password do not contains three repeating characters in a row
             int aux = s[0];
             int characterRepeated = 1;
 
-            for(int i = 1; i < s.Length; i++)
-            {
+            for(int i = 1; i < s.Length; i++) {
                 if (aux == s[i])  
                     characterRepeated++;
                 else
@@ -104,13 +105,11 @@ namespace UMT_strong_password_checker
 
                 aux = s[i];
 
-                if (characterRepeated == 3)
-                {
+                if (characterRepeated == 3) {
                     score = 0;
                     Console.WriteLine("\n Your password MUST NOT contain three repeating character in a row. Try again!");
                     break;
                 }
-
             }
 
             Console.WriteLine(errorMessage);
@@ -118,13 +117,13 @@ namespace UMT_strong_password_checker
             switch (score) {
                 
                 case 5:
-                    Console.WriteLine("\nCongratulations! Your password '"+ s +"' is very strong. Welcome!");
+                    Console.WriteLine("\nCongratulations! Your password '"+ s +"' is very strong. Welcome! You do not need any change!");
                     break;
 
                 default:
                     Console.WriteLine("\nYour password '" + s + "' is NOT allowed on this site because you do not perform all conditions!");
+                    Console.WriteLine("\nMinimum changes required is equal to " + minimumChanges);
                     break;
-
             }
 
             Console.ReadLine();
@@ -133,6 +132,8 @@ namespace UMT_strong_password_checker
         public static bool Contains(string target, string list)
         {
             return target.IndexOfAny(list.ToCharArray()) != -1;
-        }      
+        }
+
+
     }
 }
