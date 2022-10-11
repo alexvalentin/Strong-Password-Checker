@@ -7,7 +7,11 @@ Returning the minimum change required to make a strong password is a feature.
 
 ### Screenshots
 ![image](https://user-images.githubusercontent.com/67371383/195136275-6c6dad78-59e7-4c29-8af4-f981e173db04.png)
+
 ![image](https://user-images.githubusercontent.com/67371383/195136429-2b20dae0-ae39-4a33-99b5-b86171a494fd.png)
+
 ![image](https://user-images.githubusercontent.com/67371383/195136537-1c5065ed-1e7c-45a3-a75e-6eab2a3f7a0e.png)
+
 ![image](https://user-images.githubusercontent.com/67371383/195138678-485cf95a-15f9-40b9-9de7-45b394a599f8.png)
+
 ![image](https://user-images.githubusercontent.com/67371383/195136735-9c7f1d00-3d66-4e97-adff-23bfe52d339e.png)
